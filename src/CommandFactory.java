@@ -48,6 +48,10 @@ public class CommandFactory {
 			c=new rmdir();
 			c.execute(arg, bash, comanda);
 		}
+		if(arg[0].equals("rm")){
+			c=new rm();
+			c.execute(arg, bash, comanda);
+		}
 	}
 
 }

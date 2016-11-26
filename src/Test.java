@@ -24,7 +24,7 @@ public class Test {
 		slash.addPermisiuni(5);
 		bash=new Bash(root,slash);
 		bash.setroot(slash);
-		f=new File("data.in");
+		f=new File(args[0]);
 		BufferedReader br = new BufferedReader(new FileReader(f));
 		comanda=br.readLine();
 		comanda=br.readLine();

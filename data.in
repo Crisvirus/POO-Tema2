@@ -15,4 +15,5 @@ writetofile /Merge ceva
 
 chuser Ionut
 cd /Theo
-rmdir /Theo
+chuser Laurentiu
+rm -r /Theo
