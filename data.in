@@ -1,0 +1,18 @@
+mkdir /
+adduser Ionut
+adduser Theo
+adduser Laurentiu
+deluser Theo
+chuser Ionut
+mkdir /Ionut/Ceva
+mkdir Aici
+ls /.
+chuser root
+cd /../../..
+chmod 1 Ionut
+touch Merge
+writetofile /Merge ceva
+
+chuser Ionut
+cd /Theo
+rmdir /Theo
