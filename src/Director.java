@@ -15,6 +15,13 @@ public class Director extends Fisier {
 	}
 
 	public Fisier hasFile(String name) {
+		if(name.equals(".")){
+			return this;
+		}
+		if(name.equals(".."))
+		{
+			return this.parinte;
+		}
 		for (Fisier f : listaFisiere) {
 			if (f.getName().equals(name)) {
 				return f;

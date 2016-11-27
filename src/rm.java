@@ -43,6 +43,16 @@ public class rm implements Command {
 						+ ": Cannot delete parent or current directory");
 				return -13;
 			}
+			if (arg[2].equals(".")) {
+				System.out.println("-13: " + comanda
+						+ ": Cannot delete parent or current directory");
+				return -13;
+			}
+			if (arg[2].equals("..")) {
+				System.out.println("-13: " + comanda
+						+ ": Cannot delete parent or current directory");
+				return -13;
+			}
 			String[] Path = arg[2].split("/");
 
 			// String s=arg[1];
@@ -65,6 +75,15 @@ public class rm implements Command {
 				Director dir = new Director(Path[Path.length - 1],
 						bash.getUser(), auxbash.getWorkingDir());
 				// System.out.println(dir);
+				if(auxbash.getWorkingDir().hasFile(dir.getName())!=null)
+				{
+					if(auxbash.getWorkingDir().hasFile(dir.getName()).isfile==true)
+					{
+						aux[1]=arg[2]+Path[Path.length - 1];
+						rm r=new rm();
+						return r.execute(aux,auxbash, comanda);
+					}
+				}
 				if (((Director) auxbash.getWorkingDir()).isAbove(auxbash.getWorkingDir().hasFile(dir.getName())) == true) {
 					if (auxbash.getWorkingDir().hasFile(dir.getName()) != null) {
 						if (auxbash.getWorkingDir().haswPermision(auxbash.getUser())) {
