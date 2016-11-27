@@ -2,6 +2,18 @@
 public class rmdir implements Command {
 
 	public int execute(String[] arg, Bash bash, String comanda) {
+		if(arg[1].equals("."))
+		{
+			System.out.println("-13: " + comanda
+					+ ": Cannot delete parent or current directory");
+			return -13;
+		}
+		if(arg[1].equals(".."))
+		{
+			System.out.println("-13: " + comanda
+					+ ": Cannot delete parent or current directory");
+			return -13;
+		}
 		String[] Path = arg[1].split("/");
 		// String s=arg[1];
 		// System.out.println(Path[Path.length-1]);

@@ -1,6 +1,11 @@
 public class mkdir implements Command {
 
 	public int execute(String[] arg, Bash bash, String comanda) {
+		if(arg[1].equals("/"))
+		{
+			System.out.println("-1: " + comanda + ": Is a directory");
+			return -1;
+		}
 		String[] Path = arg[1].split("/");
 		// String s=arg[1];
 		// System.out.println(Path[Path.length-1]);
