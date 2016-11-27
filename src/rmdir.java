@@ -26,7 +26,7 @@ public class rmdir implements Command {
 					{
 						if(((Director) auxbash.getWorkingDir().hasFile(dir.getName())).getFiles().isEmpty())
 						{
-							if(((Director)auxbash.getWorkingDir()).isAbove(auxbash.getWorkingDir().hasFile(dir.getName()))==false){
+							if(((Director)auxbash.getWorkingDir()).isAbove(auxbash.getWorkingDir().hasFile(dir.getName()))==true){
 								auxbash.getWorkingDir().listaFisiere.remove(auxbash.getWorkingDir().hasFile(dir.getName()));
 							}
 							else{

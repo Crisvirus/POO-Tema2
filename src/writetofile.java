@@ -13,6 +13,13 @@ public class writetofile implements Command {
 		auxbash.copy(bash);
 		cd go = new cd();
 		int n=0;
+		String content=new String();
+		content=arg[2];
+		for(int i=3;i<arg.length;++i)
+		{
+			content+=" ";
+			content=content+arg[i];
+		}
 		if(arg[1].equals("")==false){
 			n = go.execute(arg, auxbash, comanda);
 		}
@@ -23,7 +30,7 @@ public class writetofile implements Command {
 				if (auxbash.getWorkingDir().hasFile(file.getName()).haswPermision(auxbash.getUser())) {
 					if(auxbash.getWorkingDir().hasFile(file.getName()).isfile)
 					{
-						auxbash.getWorkingDir().hasFile(file.getName()).putContent(arg[2]);
+						auxbash.getWorkingDir().hasFile(file.getName()).putContent(content);
 					}
 					else{
 						System.out.println("-1: " + comanda

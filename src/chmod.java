@@ -16,25 +16,25 @@ public class chmod implements Command {
 		String[] Path = arg[2].split("/");
 		String[] aux=new String[2];
 		aux[0]=arg[0];
-		aux[1]=arg[2];
 		// String s=arg[1];
 		// System.out.println(Path[Path.length-1]);
 		// int n=arg[1].indexOf(Path[Path.length-1]);
 		// System.out.println(n);
 		arg[2] = arg[2].substring(0, arg[2].indexOf(Path[Path.length - 1]));
 		// System.out.println(arg[1]);
+		aux[1]=arg[2];
 		Bash auxbash=new Bash(bash.getUser(),bash.getWorkingDir());
 		auxbash.copy(bash);
 		cd go = new cd();
 		int n=0;
-		if(arg[2].equals("")==false){
+		if(arg[2].equals("")==false && arg[2].equals("/")==false){
 			n = go.execute(aux, auxbash, comanda);
 		}
 		if (n == 0) {
 			Director dir = new Director(Path[Path.length - 1], bash.getUser(),
 					auxbash.getWorkingDir());
 			if (auxbash.getWorkingDir().hasFile(dir.getName()) != null) {
-				if (auxbash.getWorkingDir().haswPermision(auxbash.getUser())) {
+				if (auxbash.getWorkingDir().hasFile(dir.getName()).haswPermision(auxbash.getUser())) {
 					auxbash.getWorkingDir().hasFile(dir.getName()).setPermisiuni(p);
 				} else {
 					System.out.println("-5: " + comanda
