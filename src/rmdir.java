@@ -9,7 +9,8 @@ public class rmdir implements Command {
 		// System.out.println(n);
 		arg[1] = arg[1].substring(0, arg[1].indexOf(Path[Path.length - 1]));
 		// System.out.println(arg[1]);
-		Bash auxbash = bash;
+		Bash auxbash=new Bash(bash.getUser(),bash.getWorkingDir());
+		auxbash.copy(bash);
 		cd go = new cd();
 		int n=0;
 		if(arg[1].equals("")==false){
@@ -20,7 +21,7 @@ public class rmdir implements Command {
 					auxbash.getWorkingDir());
 			//System.out.println(dir);
 			if (auxbash.getWorkingDir().hasFile(dir.getName()) != null) {
-				if (auxbash.getWorkingDir().hasFile(dir.getName()).haswPermision(auxbash.getUser())) {
+				if (auxbash.getWorkingDir().haswPermision(auxbash.getUser())) {
 					if(auxbash.getWorkingDir().hasFile(dir.getName()).isfile==false)
 					{
 						if(((Director) auxbash.getWorkingDir().hasFile(dir.getName())).getFiles().isEmpty())

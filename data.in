@@ -1,19 +1,25 @@
 mkdir /
-adduser Ionut
-adduser Theo
-adduser Laurentiu
-deluser Theo
-chuser Ionut
-mkdir /Ionut/Ceva
-mkdir Aici
-ls /.
+adduser legolas
+adduser aragorn
+adduser gandalf
+adduser saruman
+adduser frodo
+ls .
+chmod 77 gandalf
+ls .././.././../.
+deluser gandalf
+ls .
+chuser legolas
+cd ../saruman
+rmdir gandalf
+touch iceage.pdf
+touch /gandalf/iceage.pdf
 chuser root
-cd /../../..
-chmod 1 Ionut
-touch Merge
-writetofile /Merge ceva
-
-chuser Ionut
-cd /Theo
-chuser Laurentiu
-rm -r /Theo
+chmod 71 aragorn
+chuser legolas
+cd ../.././.././aragorn
+touch iceage.pdf
+rmdir /gandalf/iceage.pdf
+rm -r /gandalf
+chuser root
+rm -r gandalf

@@ -20,7 +20,7 @@ public class rm implements Command {
 				Fisier file = new Fisier(Path[Path.length - 1], bash.getUser(),
 						auxbash.getWorkingDir());
 				if (auxbash.getWorkingDir().hasFile(file.getName()) != null) {
-					if (auxbash.getWorkingDir().hasFile(file.getName()).haswPermision(auxbash.getUser())) {
+					if (auxbash.getWorkingDir().haswPermision(auxbash.getUser())) {
 						if(auxbash.getWorkingDir().hasFile(file.getName()).isfile)
 						{
 							auxbash.getWorkingDir().getFiles().remove(auxbash.getWorkingDir().hasFile(file.getName()));
@@ -53,7 +53,8 @@ public class rm implements Command {
 			String[] aux=new String[2];
 			aux[0]=arg[0];
 			aux[1]=arg[2];
-			Bash auxbash = bash;
+			Bash auxbash=new Bash(bash.getUser(),bash.getWorkingDir());
+			auxbash.copy(bash);
 			cd go = new cd();
 			int n=0;
 			if(arg[2].equals("")==false){
@@ -64,7 +65,7 @@ public class rm implements Command {
 						auxbash.getWorkingDir());
 				//System.out.println(dir);
 				if (auxbash.getWorkingDir().hasFile(dir.getName()) != null) {
-					if (auxbash.getWorkingDir().hasFile(dir.getName()).haswPermision(auxbash.getUser())) {
+					if (auxbash.getWorkingDir().haswPermision(auxbash.getUser())) {
 						if(((Director)auxbash.getWorkingDir()).isAbove(auxbash.getWorkingDir().hasFile(dir.getName()))==true){
 							auxbash.getWorkingDir().listaFisiere.remove(auxbash.getWorkingDir().hasFile(dir.getName()));
 						}

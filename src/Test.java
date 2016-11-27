@@ -30,7 +30,9 @@ public class Test {
 		comanda=br.readLine();
 		CommandFactory cf=new CommandFactory();
 		while(comanda!=null){
-			//System.out.println(comanda);
+//			System.out.println("Comanda "+comanda+" Director curent "+bash.getWorkingDir()+" User curent "+bash.getUserCurent());
+//			bash.getWorkingDir().printPermisiuni();
+//			System.out.println();
 			cf.newCommand(comanda, bash);
 			comanda=br.readLine();
 		}

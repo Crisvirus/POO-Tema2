@@ -9,7 +9,8 @@ public class writetofile implements Command {
 		// System.out.println(n);
 		arg[1] = arg[1].substring(0, arg[1].indexOf(Path[Path.length - 1]));
 		// System.out.println(arg[1]);
-		Bash auxbash = bash;
+		Bash auxbash=new Bash(bash.getUser(),bash.getWorkingDir());
+		auxbash.copy(bash);
 		cd go = new cd();
 		int n=0;
 		if(arg[1].equals("")==false){

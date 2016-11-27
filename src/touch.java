@@ -9,7 +9,8 @@ public class touch implements Command {
 		// System.out.println(n);
 		arg[1] = arg[1].substring(0, arg[1].indexOf(Path[Path.length - 1]));
 		// System.out.println(arg[1]);
-		Bash auxbash = bash;
+		Bash auxbash=new Bash(bash.getUser(),bash.getWorkingDir());
+		auxbash.copy(bash);
 		cd go = new cd();
 		int n=0;
 		if(arg[1].equals("")==false){
@@ -19,9 +20,9 @@ public class touch implements Command {
 			Fisier file = new Fisier(Path[Path.length - 1], bash.getUser(),
 					auxbash.getWorkingDir());
 			if (auxbash.getWorkingDir().hasFile(file.getName()) == null) {
-				if (auxbash.getWorkingDir().haswPermision(auxbash.getUser())) {
+				if (auxbash.getWorkingDir().haswPermision(bash.getUser())) {
 					auxbash.getWorkingDir().addFile(file);
-					auxbash.getUser().addOwned(file);
+					bash.getUser().addOwned(file);
 				} else {
 					System.out.println("-5: " + comanda
 							+ ": No rights to write");

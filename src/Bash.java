@@ -14,6 +14,13 @@ public class Bash {
 		this.utilizatori.add(utilizator);
 		
 	}
+	public Bash copy(Bash bash){
+		this.userCurent=bash.getUser();
+		this.workingDir=bash.getWorkingDir();
+		this.root=bash.getroot();
+		this.utilizatori=new LinkedList<User>(bash.getUtilizatori());
+		return this;
+	}
 	public User getUser(){
 		return this.userCurent;
 	}
