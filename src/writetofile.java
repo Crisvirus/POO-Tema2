@@ -27,22 +27,22 @@ public class writetofile implements Command {
 			Fisier file = new Fisier(Path[Path.length - 1], bash.getUser(),
 					auxbash.getWorkingDir());
 			if (auxbash.getWorkingDir().hasFile(file.getName()) != null) {
-				if (auxbash.getWorkingDir().hasFile(file.getName()).haswPermision(auxbash.getUser())) {
-					if(auxbash.getWorkingDir().hasFile(file.getName()).isfile)
-					{
+				if(auxbash.getWorkingDir().hasFile(file.getName()).isfile)
+				{
+					if (auxbash.getWorkingDir().hasFile(file.getName()).haswPermision(auxbash.getUser())) {
 						auxbash.getWorkingDir().hasFile(file.getName()).putContent(content);
+					} else {
+						System.out.println("-5: " + comanda
+								+ ": No rights to write");
+						return -5;
 					}
-					else{
-						System.out.println("-1: " + comanda
-								+ ": Is a directory");
-						return -1;
-					}
-				} else {
-					System.out.println("-5: " + comanda
-							+ ": No rights to write");
-					return -5;
+				} else{
+					System.out.println("-1: " + comanda
+							+ ": Is a directory");
+					return -1;
 				}
-			} else {
+			}
+			else {
 				System.out.println("-11: " + comanda + ": No such file");
 				return -12;
 			}

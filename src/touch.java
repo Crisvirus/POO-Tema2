@@ -19,24 +19,24 @@ public class touch implements Command {
 		if (n == 0) {
 			Fisier file = new Fisier(Path[Path.length - 1], bash.getUser(),
 					auxbash.getWorkingDir());
-			if (auxbash.getWorkingDir().hasFile(file.getName()) == null) {
-				if (auxbash.getWorkingDir().haswPermision(bash.getUser())) {
+			if (auxbash.getWorkingDir().haswPermision(bash.getUser())) {
+				if (auxbash.getWorkingDir().hasFile(file.getName()) == null) {
 					auxbash.getWorkingDir().addFile(file);
 					bash.getUser().addOwned(file);
 				} else {
-					System.out.println("-5: " + comanda
-							+ ": No rights to write");
-					return -5;
+					if (auxbash.getWorkingDir().hasFile(file.getName()).isfile == true) {
+						System.out
+								.println("-7: " + comanda + ": File already exists");
+						return -3;
+					} else {
+						System.out.println("-1: " + comanda + ": Is a directory");
+						return -1;
+					}
 				}
 			} else {
-				if (auxbash.getWorkingDir().hasFile(file.getName()).isfile == true) {
-					System.out
-							.println("-7: " + comanda + ": File already exists");
-					return -3;
-				} else {
-					System.out.println("-1: " + comanda + ": Is a directory");
-					return -1;
-				}
+				System.out.println("-5: " + comanda
+						+ ": No rights to write");
+				return -5;
 			}
 		}
 

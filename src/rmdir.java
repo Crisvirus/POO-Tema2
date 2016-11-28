@@ -33,6 +33,11 @@ public class rmdir implements Command {
 					auxbash.getWorkingDir());
 			//System.out.println(dir);
 			if (auxbash.getWorkingDir().hasFile(dir.getName()) != null) {
+				if(Path[Path.length - 1].equals("..")){
+					System.out.println("-13: " + comanda
+							+ ": Cannot delete parent or current directory");
+					return -13;
+				}
 				if (auxbash.getWorkingDir().haswPermision(auxbash.getUser())) {
 					if(auxbash.getWorkingDir().hasFile(dir.getName()).isfile==false)
 					{
