@@ -2,6 +2,19 @@ public class ls implements Command {
 
 	public int execute(String[] arg, Bash bash, String comanda) {
 		String[] Path = arg[1].split("/");
+		if(arg[1].equals("/")){
+			if(bash.getWorkingDir().hasrPermision(bash.getUser())){
+				for (Fisier f : (bash.getWorkingDir().getFiles())) {
+					f.print();
+				}
+				return 0;
+			}
+			else{
+				System.out.println("-4: " + comanda
+						+ ": No rights to read");
+				return -4;
+			}
+		}
 		// String s=arg[1];
 		// System.out.println(Path[Path.length-1]);
 		// int n=arg[1].indexOf(Path[Path.length-1]);
@@ -23,6 +36,12 @@ public class ls implements Command {
 				Fisier file = new Fisier(Path[Path.length - 1], bash.getUser(),
 						auxbash.getWorkingDir());
 				if (auxbash.getWorkingDir().hasFile(file.getName()) != null) {
+					if(auxbash.getWorkingDir().hasFile(file.getName()).isfile==false && auxbash.getWorkingDir().hasFile(file.getName()).hasxPermision(bash.getUser())==false)
+					{
+						System.out.println("-6: " + comanda
+								+ ": No rights to execute");
+						return -6;
+					}
 					if (auxbash.getWorkingDir().hasFile(file.getName())
 							.hasrPermision(bash.getUser())) {
 						if (auxbash.getWorkingDir().hasFile(file.getName()).isfile) {

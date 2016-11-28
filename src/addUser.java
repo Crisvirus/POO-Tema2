@@ -7,11 +7,11 @@ public class addUser implements Command {
 			User util=new User(arg[1]);
 			if(bash.getUtilizatori().contains(util)==false)
 			{
-				Director dir=new Director(arg[1],util,bash.getWorkingDir());
+				Director dir=new Director(arg[1],util,bash.getroot());
 				util.setHome(dir);
 				//bash.setUserCurent(util);
 				bash.addUser(util);
-				bash.getWorkingDir().addFile(dir);
+				bash.getroot().addFile(dir);
 				util.addOwned(dir);
 				//bash.setWorkingDir(dir);
 			}

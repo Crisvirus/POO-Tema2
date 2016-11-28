@@ -30,6 +30,9 @@ public class chmod implements Command {
 		if(arg[2].equals("")==false && arg[2].equals("/")==false){
 			n = go.execute(aux, auxbash, comanda);
 		}
+		if(arg[2].equals("/")){
+			auxbash.setWorkingDir(auxbash.getroot());
+		}
 		if (n == 0) {
 			Director dir = new Director(Path[Path.length - 1], bash.getUser(),
 					auxbash.getWorkingDir());
