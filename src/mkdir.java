@@ -1,23 +1,18 @@
 public class mkdir implements Command {
 
 	public int execute(String[] arg, Bash bash, String comanda) {
-		if(arg[1].equals("/"))
-		{
+		// Comanda mkdir creeaza un nou director
+		if (arg[1].equals("/")) {
 			System.out.println("-1: " + comanda + ": Is a directory");
 			return -1;
 		}
 		String[] Path = arg[1].split("/");
-		// String s=arg[1];
-		// System.out.println(Path[Path.length-1]);
-		// int n=arg[1].indexOf(Path[Path.length-1]);
-		// System.out.println(n);
 		arg[1] = arg[1].substring(0, arg[1].indexOf(Path[Path.length - 1]));
-		// System.out.println(arg[1]);
-		Bash auxbash=new Bash(bash.getUser(),bash.getWorkingDir());
+		Bash auxbash = new Bash(bash.getUser(), bash.getWorkingDir());
 		auxbash.copy(bash);
 		cd go = new cd();
-		int n=0;
-		if(arg[1].equals("")==false){
+		int n = 0;
+		if (arg[1].equals("") == false) {
 			n = go.execute(arg, auxbash, comanda);
 		}
 		if (n == 0) {
@@ -34,8 +29,7 @@ public class mkdir implements Command {
 				}
 			} else {
 				if (auxbash.getWorkingDir().hasFile(dir.getName()).isfile == true) {
-					System.out
-							.println("-3: " + comanda + ": Not a directory");
+					System.out.println("-3: " + comanda + ": Not a directory");
 					return -3;
 				} else {
 					System.out.println("-1: " + comanda + ": Is a directory");
@@ -43,8 +37,6 @@ public class mkdir implements Command {
 				}
 			}
 		}
-
-		// int n=
 		return 0;
 	}
 

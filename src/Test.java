@@ -1,15 +1,12 @@
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class Test {
-
-	/**
-	 * @param args
-	 * @throws IOException 
+	/*
+	 * Clasa Test este clasa ce contine main-ul, si este clasa din care se
+	 * parcurge fiecare comanda
 	 */
 	public static void main(String[] args) throws IOException {
 		Bash bash;
@@ -18,31 +15,22 @@ public class Test {
 		Director slash;
 		User root;
 		root = new User("root");
-		slash=new Director("/", root, null);
+		slash = new Director("/", root, null);
 		root.setHome(slash);
 		slash.setParent(slash);
 		slash.addPermisiuni(5);
-		bash=new Bash(root,slash);
+		bash = new Bash(root, slash);
 		bash.setroot(slash);
-		f=new File(args[0]);
+		f = new File(args[0]);
 		BufferedReader br = new BufferedReader(new FileReader(f));
-		comanda=br.readLine();
-		comanda=br.readLine();
-		CommandFactory cf=new CommandFactory();
-		while(comanda!=null){
-//			System.out.println("Comanda "+comanda+" Director curent "+bash.getWorkingDir()+" User curent "+bash.getUserCurent());
-//			bash.getWorkingDir().printPermisiuni();
-//			System.out.println();
+		comanda = br.readLine();
+		comanda = br.readLine();
+		CommandFactory cf = new CommandFactory();
+		while (comanda != null) {
 			cf.newCommand(comanda, bash);
-			comanda=br.readLine();
+			comanda = br.readLine();
 		}
-		//System.out.println(bash.getUserCurent()+" "+bash.getWorkingDir()+" "+bash.getUtilizatori());
-		//System.out.println(bash.getUtilizatori().get(1).getOwned());
 		bash.getroot().printRecursiv("");
-		
-		
-		
-		
 		br.close();
 	}
 

@@ -1,7 +1,9 @@
 import java.util.LinkedList;
 
 public class Director extends Fisier {
-	LinkedList<Fisier> listaFisiere;
+	// Clasa Director extinde clasa Fisier. Aceasta contine in plus fata de
+	// Fisier o lista cu fisierele care se afla in director
+	private LinkedList<Fisier> listaFisiere;
 
 	Director(String name, User owner, Director parinte) {
 		this.name = name;
@@ -15,11 +17,10 @@ public class Director extends Fisier {
 	}
 
 	public Fisier hasFile(String name) {
-		if(name.equals(".")){
+		if (name.equals(".")) {
 			return this;
 		}
-		if(name.equals(".."))
-		{
+		if (name.equals("..")) {
 			return this.parinte;
 		}
 		for (Fisier f : listaFisiere) {

@@ -1,9 +1,12 @@
 public class Fisier {
-	String name, content;
-	byte permisiuni;
-	User owner;
+	// Clasa Fisier contine numele fisierului, permisiunile acestuia, user-ul ce
+	// detine fisierul, o referinta catre directorul parinte si continutul
+	// fisierului
+	protected String name, content;
+	protected byte permisiuni;
+	protected User owner;
+	protected Director parinte;
 	boolean isfile;
-	Director parinte;
 
 	Fisier() {
 		this.name = null;
@@ -23,12 +26,15 @@ public class Fisier {
 		this.isfile = true;
 		this.content = null;
 	}
-	public void addPermisiuni(int x){
-		this.permisiuni=(byte) (this.permisiuni | x);
+
+	public void addPermisiuni(int x) {
+		this.permisiuni = (byte) (this.permisiuni | x);
 	}
-	public void setParent(Director dir){
-		this.parinte=dir;
+
+	public void setParent(Director dir) {
+		this.parinte = dir;
 	}
+
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
@@ -36,19 +42,22 @@ public class Fisier {
 	public String getName() {
 		return this.name;
 	}
-	public void setPermisiuni(int x)
-	{
-		this.permisiuni=(byte) x;
+
+	public void setPermisiuni(int x) {
+		this.permisiuni = (byte) x;
 	}
+
 	@Override
 	public String toString() {
 
 		return this.name;
 	}
-	public void putContent(String content){
-		this.content=content;
+
+	public void putContent(String content) {
+		this.content = content;
 	}
-	public String getContent(){
+
+	public String getContent() {
 		return this.content;
 	}
 
@@ -75,6 +84,7 @@ public class Fisier {
 			return (this.permisiuni & 2) == 2;
 		}
 	}
+
 	public boolean hasrPermision(User util) {
 		User root = new User("root");
 		if (util.equals(root)) {
@@ -119,10 +129,11 @@ public class Fisier {
 			p = p + "-";
 		System.out.print(p);
 	}
-	public void print(){
-		System.out.print(this.name+" ");
+
+	public void print() {
+		System.out.print(this.name + " ");
 		this.printPermisiuni();
-		System.out.println(" "+this.owner);
+		System.out.println(" " + this.owner);
 	}
 
 }
